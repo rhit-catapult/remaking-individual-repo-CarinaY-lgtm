@@ -23,11 +23,13 @@ while True:
  
     screen.fill(pygame.Color("Grey"))
 
-    # Draw things on the screen (colour, coorindates [(0,0 is top left corner, positive y goes down)], radius, optional thickness/width)
+    # Draw things on the screen (colour, coordinates, radius, optional thickness/width)
     # colour (R, G, B) highest is 255, lowest is 0
+    # coordinates (0,0) is top left corner, positive x goes right, positive y goes down
+    # don't hard-code numbers, use screen.get_width() and screen.get_height() 
     pygame.draw.circle(screen, pygame.Color("Purple"), (screen.get_width() / 2, screen.get_height() / 2), 100)
-    pygame.draw.circle(screen, (255, 80, 50), (600, 480), 80, 10)
-    pygame.draw.circle(screen, (255, 255, 0), (200, 500), 50)
+    pygame.draw.circle(screen, (255, 80, 50), (screen.get_width() - 150, screen.get_height() - 170), 80, 10)
+    pygame.draw.circle(screen, (255, 255, 0), (150, screen.get_height() - 150), 50)
 
     # notice how this statement is still inside of the first while loop, but
     # outside of the for loop (why? because it is at the same level of
