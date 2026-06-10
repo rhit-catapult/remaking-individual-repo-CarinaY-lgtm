@@ -8,13 +8,13 @@ def main():
     screen = pygame.display.set_mode((640, 480))
     eye_x = 0
     eye_y = 0
+    clock = pygame.time.Clock()
 
     while True:
-        # TODO 4: Set the clock speed to 60 fps
+        clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            # TODO 3: Make the eye pupils move with Up, Down, Left, and Right keys
 
             if event.type == pygame.KEYDOWN:
                 pressed_keys = pygame.key.get_pressed()
@@ -38,6 +38,15 @@ def main():
                     print("right")
                     eye_x += 5
 
+        pressed_keys = pygame.key.get_pressed()
+        if pressed_keys[pygame.K_UP]:
+            eye_y -= 5
+        if pressed_keys[pygame.K_DOWN]:
+            eye_y += 5
+        if pressed_keys[pygame.K_LEFT]:
+            eye_x -= 5
+        if pressed_keys[pygame.K_RIGHT]:
+            eye_x += 5 
 
 
         screen.fill((255, 255, 255))  # white
@@ -53,7 +62,7 @@ def main():
         pygame.draw.circle(screen, (0, 0, 0), (400, 160), 25, 3)  # black outline
         pygame.draw.circle(screen, (0, 0, 0), (400 + eye_x, 160 + eye_y), 10)  # black pupil
 
-        pygame.draw.circle(screen, (80, 30, 0), (320, 245), 10) # brown nose 
+        pygame.draw.circle(screen, (150, 70, 0), (320, 245), 10) # brown nose 
 
         pygame.draw.rect(screen, (255,50,10), (230, 320, 180, 30),) # mouth
         pygame.draw.rect(screen, (0,0,0), (230, 320, 180, 30), 5) # black outline
