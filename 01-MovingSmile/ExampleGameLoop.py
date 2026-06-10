@@ -27,7 +27,8 @@ while True:
     # colour (R, G, B) highest is 255, lowest is 0
     # coordinates (0,0) is top left corner, positive x goes right, positive y goes down
     # don't hard-code numbers, use screen.get_width() and screen.get_height() 
-    pygame.draw.circle(screen, pygame.Color("Purple"), (screen.get_width() / 2, screen.get_height() / 2), 100)
+    # // for integer division
+    pygame.draw.circle(screen, pygame.Color("Purple"), (screen.get_width() // 2, screen.get_height() // 2), 100)
     pygame.draw.circle(screen, (255, 80, 50), (screen.get_width() - 150, screen.get_height() - 170), 80, 10)
     pygame.draw.circle(screen, (255, 255, 0), (150, screen.get_height() - 150), 50)
 
