@@ -47,11 +47,11 @@ def main():
 
         pygame.draw.circle(screen, (225, 225, 225), (240, 160), 25)  # white eye
         pygame.draw.circle(screen, (0, 0, 0), (240, 160), 25, 3)  # black outline
-        pygame.draw.circle(screen, (0, 0, 0), (242 + eye_x, 162 + eye_y), 7)  # black pupil
+        pygame.draw.circle(screen, (0, 0, 0), (240 + eye_x, 160 + eye_y), 10)  # black pupil
 
         pygame.draw.circle(screen, (225, 225, 225), (400, 160), 25)  # white eye
         pygame.draw.circle(screen, (0, 0, 0), (400, 160), 25, 3)  # black outline
-        pygame.draw.circle(screen, (0, 0, 0), (398 + eye_x, 162 + eye_y), 7)  # black pupil
+        pygame.draw.circle(screen, (0, 0, 0), (400 + eye_x, 160 + eye_y), 10)  # black pupil
 
         pygame.draw.circle(screen, (80, 30, 0), (320, 245), 10) # brown nose 
 
