@@ -47,7 +47,7 @@ class Hero:
         #     - Set the "last hit time" to 0.
         #   Use instance variables:
         #      screen  x  y  image_umbrella   image_no_umbrella  last_hit_time.
-        self.screen = screen
+        self_screen = screen
         self.x = x
         self.y = y
         self.image_umbrella = pygame.image.load(with_umbrella_filename)
