@@ -81,19 +81,22 @@ class Hero:
 class Cloud:
     def __init__(self, screen, x, y, image_filename):
         """ Creates a Cloud sprite that will produce Raindrop objects.  The cloud will be moving around. """
-        # TODO 24: Initialize this Cloud, as follows:
+        # Done 24: Initialize this Cloud, as follows:
         #     - Store the screen.
         #     - Set the initial position of this Cloud to x and y.
         #     - Set the image of this Cloud to the given image filename.
         #     - Create a list for Raindrop objects as an empty list called raindrops.
         #   Use instance variables:
         #      screen  x  y  image   raindrops.
-        pass
+        self.screen = screen
+        self.x = x
+        self.y = y
+        self.image_filename = pygame.image.load(image_filename)
 
     def draw(self):
         """ Draws this sprite onto the screen. """
-        # TODO 25: Draw (blit) this Cloud's image at its current position.
-        pass
+        # Done 25: Draw (blit) this Cloud's image at its current position.
+        self.screen.blit(self.image_filename, (self.x, self.y))
 
     def rain(self):
         """ Adds a Raindrop to the array of raindrops so that it looks like the Cloud is raining. """
@@ -101,7 +104,7 @@ class Cloud:
         #     where the new Raindrop starts at:
         #       - x is a random integer between this Cloud's x and this Cloud's x + 300.
         #       - y is this Cloud's y + 100.
-        pass
+        
 
 
 def main():
@@ -118,9 +121,10 @@ def main():
     
     # Done 15: Make a Hero, named mike, with appropriate images, starting at position x=200 y=400.
     # Done 15: Make a Hero, named alyssa, with appropriate images, starting at position x=700 y=400.
-    # TODO 23: Make a Cloud, named cloud, with appropriate images, starting at position x=300 y=50.
+    # Done 23: Make a Cloud, named cloud, with appropriate images, starting at position x=300 y=50.
     mike = Hero(screen, 200, 400, "Mike_umbrella.png", "Mike.png")
     alyssa = Hero(screen, 700, 400, "Alyssa_umbrella.png", "Alyssa.png")
+    cloud = Cloud(screen, 300, 50, "another_cloud.png")
 
     while True:
         clock.tick(60)
@@ -144,7 +148,8 @@ def main():
         screen.fill(pygame.Color("White"))
 
 
-        # TODO 26: Draw the Cloud.
+        # Done 26: Draw the Cloud.
+        cloud.draw()
 
         # TODO 29: Remove the temporary testdrop code from this function and refactor it as follows:
         # TODO: Make the Cloud "rain", then:
