@@ -92,6 +92,7 @@ class Cloud:
         self.x = x
         self.y = y
         self.image_filename = pygame.image.load(image_filename)
+        self.raindrops = []
 
     def draw(self):
         """ Draws this sprite onto the screen. """
@@ -131,11 +132,21 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+        
+        pressed_keys = pygame.key.get_pressed()
+        if pressed_keys[pygame.K_UP]:
+            cloud.y -= 10
+        if pressed_keys[pygame.K_DOWN]:
+            cloud.y += 10
+        if pressed_keys[pygame.K_LEFT]:
+            cloud.x -= 10
+        if pressed_keys[pygame.K_RIGHT]:
+            cloud.x += 10
 
     # Done 3: Enter the game loop, with a clock tick of 60 (or so) at each iteration.
         # Done 4:   Make the pygame.QUIT event stop the game.
 
-        # TODO 27: Inside the game loop (AFTER the events loop above), get the list of keys that are currently pressed.
+        # Done 27: Inside the game loop (AFTER the events loop above), get the list of keys that are currently pressed.
         #     Arrange so that the Cloud moves:
         #       5 pixels (or 10 pixels) to the right if the Right Arrow key (pygame.K_RIGHT) is pressed.
         #       5 pixels (or 10 pixels) to the left  if the Left  Arrow key (pygame.K_LEFT)  is pressed.
@@ -143,6 +154,7 @@ def main():
         #       5 pixels (or 10 pixels) down         if the Down  Arrow key (pygame.K_DOWN)  is pressed.
         # DISCUSS: If you want something to happen once per key press, put it in the events loop above
         #          If you want something to continually happen while holding the key, put it after the events loop.
+
 
         # Done 5: Inside the game loop, draw the screen (fill with white)
         screen.fill(pygame.Color("White"))
