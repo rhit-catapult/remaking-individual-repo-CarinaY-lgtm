@@ -91,21 +91,24 @@ class Cloud:
         self.screen = screen
         self.x = x
         self.y = y
-        self.image_filename = pygame.image.load(image_filename)
+        self.image = pygame.image.load(image_filename)
         self.raindrops = []
 
     def draw(self):
         """ Draws this sprite onto the screen. """
         # Done 25: Draw (blit) this Cloud's image at its current position.
-        self.screen.blit(self.image_filename, (self.x, self.y))
+        self.screen.blit(self.image, (self.x, self.y))
 
     def rain(self):
         """ Adds a Raindrop to the array of raindrops so that it looks like the Cloud is raining. """
-        # TODO 28: Append a new Raindrop to this Cloud's list of raindrops,
+        # Done 28: Append a new Raindrop to this Cloud's list of raindrops,
         #     where the new Raindrop starts at:
         #       - x is a random integer between this Cloud's x and this Cloud's x + 300.
         #       - y is this Cloud's y + 100.
-        
+        for k in range (10): # changes amount of rain
+            new_raindrop = Raindrop(self.screen, random.randint(self.x + 10, self.x + self.image.get_width() - 10),
+                                    self.y + self.image.get_height() - 10)
+            self.raindrops.append(new_raindrop)
 
 
 def main():
@@ -162,14 +165,26 @@ def main():
 
         # Done 26: Draw the Cloud.
         cloud.draw()
-
-        # TODO 29: Remove the temporary testdrop code from this function and refactor it as follows:
-        # TODO: Make the Cloud "rain", then:
-        # TODO    For each Raindrop in the Cloud's list of raindrops:
+        
+        # Done 29: Remove the temporary testdrop code from this function and refactor it as follows:
+        # Done: Make the Cloud "rain", then:
+        # Done    For each Raindrop in the Cloud's list of raindrops:
             #       - move the Raindrop.
             #       - draw the Raindrop.
-            # TODO  30: if the Hero (Mike or Alyssa) is hit by a Raindrop, set the Hero's last_time_hit to the current time.
+            # Done  30: if the Hero (Mike or Alyssa) is hit by a Raindrop, set the Hero's last_time_hit to the current time.
             # Optional  - if the Raindrop is off the screen or hitting a Hero, remove it from the Cloud's list of raindrops.
+        cloud.rain()
+        for raindrop in cloud.raindrops:
+            raindrop.move()
+            raindrop.draw()
+            if mike.hit_by(raindrop):
+                mike.last_hit_time = time.time()
+                cloud.raindrops.remove(raindrop)
+            if alyssa.hit_by(raindrop):
+                alyssa.last_hit_time = time.time()
+                cloud.raindrops.remove(raindrop)
+            if raindrop.off_screen():
+                cloud.raindrops.remove(raindrop)
 
         # Done 18: Draw the Heroes (Mike and Alyssa)
         mike.draw()
