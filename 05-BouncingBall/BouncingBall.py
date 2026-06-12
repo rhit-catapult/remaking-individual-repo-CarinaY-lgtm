@@ -27,7 +27,15 @@ class Ball:
     def move(self):
         self.x += self.speed_x
         self.y += self.speed_y
-        if self.x
+        if self.x - self.radius <= 0:
+            self.speed_x = -self.speed_x
+        if self.x + self.radius >= self.screen.get_width():
+            self.speed_x = -self.speed_x
+        if self.y - self.radius <= 0:
+            self.speed_y = -self.speed_y
+        if self.y + self.radius >= self.screen.get_height():
+            self.speed_y = - self.speed_y
+
 
 def main():
     pygame.init()
